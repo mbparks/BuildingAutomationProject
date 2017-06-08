@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="50" unitdist="mil" unit="inch" style="dots" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="inch"/>
+<grid distance="0.005" unitdist="inch" unit="inch" style="dots" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -40,7 +40,7 @@
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
@@ -142,13 +142,14 @@
 </layers>
 <board>
 <plain>
-<wire x1="0" y1="0" x2="76.18" y2="0" width="0" layer="20"/>
-<wire x1="76.18" y1="0" x2="76.18" y2="50.47" width="0" layer="20"/>
-<wire x1="76.18" y1="50.47" x2="0" y2="50.47" width="0" layer="20"/>
-<wire x1="0" y1="50.47" x2="0" y2="0" width="0" layer="20"/>
+<wire x1="0" y1="0" x2="76.2" y2="0" width="0" layer="20"/>
+<wire x1="76.2" y1="0" x2="76.2" y2="50.8" width="0" layer="20"/>
+<wire x1="76.2" y1="50.8" x2="0" y2="50.8" width="0" layer="20"/>
+<wire x1="0" y1="50.8" x2="0" y2="0" width="0" layer="20"/>
 <dimension x1="0" y1="0" x2="76.2" y2="0" x3="38.1" y3="-10.16" textsize="1.778" layer="1" unit="inch"/>
 <dimension x1="0" y1="0" x2="0" y2="50.8" x3="-12.7" y3="25.4" textsize="1.778" layer="1" unit="inch"/>
-<text x="8.89" y="7.62" size="2.54" layer="1" rot="R90">MOUSER</text>
+<hole x="12.7" y="38.1" drill="1"/>
+<hole x="63.5" y="38.1" drill="1"/>
 </plain>
 <libraries>
 <library name="adafruit">
