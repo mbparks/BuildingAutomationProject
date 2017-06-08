@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "/Users/Mike/Library/Arduino15/packages/adafruit/hardware/samd/1.0.17/cores/arduino"
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": false,
+                "path": [
+                    "/Users/Mike/Library/Arduino15/packages/adafruit/hardware/samd/1.0.17/cores/arduino"
+                ]
+            }
+        }
+    ]
+}
