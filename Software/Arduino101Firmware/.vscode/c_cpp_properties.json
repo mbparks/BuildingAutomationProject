@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "/Users/Mike/Library/Arduino15/packages/Intel/hardware/arc32/2.0.2/cores/arduino"
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": false,
+                "path": [
+                    "/Users/Mike/Library/Arduino15/packages/Intel/hardware/arc32/2.0.2/cores/arduino"
+                ]
+            }
+        }
+    ]
+}
