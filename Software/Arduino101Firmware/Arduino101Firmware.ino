@@ -6,11 +6,13 @@
 #include <SparkFunESP8266WiFi.h>
 
 static TEWeatherShield weatherShield;
+ESP8266Client client;
+
 static int PWMpin = 2;
 const char mySSID[] = "myssid";
 const char myPASS[] = "password";
-const char ubidotsToken[] = "token";
-const char ubidotsDeviceId[] = "deviceid";
+const char ubidotsToken[] = "yoc4qzLl8qo38xx6vyX5E06VnsIK2Q";
+const char ubidotsDeviceId[] = "593aa4c87625424ab7bfebc1";
 const char destServer[] = "things.ubidots.com";
 
 const String httpRequest1 = "POST /api/v1.6/devices/";
@@ -64,8 +66,6 @@ void loop() {
     String humidityPacket = "\"humidity\": {\"value\":"+String(humidity)+"}}";
     String packet = tempPacket+pressurePacket+humidityPacket;
 
-    
-    ESP8266Client client;
     int retVal = client.connect(destServer, 80);
     if (retVal <= 0)
     {
@@ -109,11 +109,11 @@ void getMeasurements(float *t, float *p, float *h) {
     Serial.print((char)176);
     Serial.println(F("C"));
 
-    Serial.print("- Pressure : ");
+    Serial.print(F("- Pressure : "));
     Serial.print(*p);
     Serial.println(F(" hPa"));
     
-    Serial.print("- Humidity : ");
+    Serial.print(F("- Humidity : "));
     Serial.print(*h);
     Serial.println(F("%RH"));
     Serial.println();
