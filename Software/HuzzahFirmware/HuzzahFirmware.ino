@@ -1,3 +1,6 @@
+//////////////////////////////////////////////////////
+//
+//////////////////////////////////////////////////////
 #include <ESP8266WiFi.h>
 #include <Servo.h>
 
@@ -5,22 +8,24 @@ static int PWMpin = 2;
 static int baffleClosedPosition = 0;
 static int baffleOpenPosition = 180;
 
-const char mySSID[] = "myssid";
-const char myPASS[] = "password";
-const char ubidotsToken[] = "yoc4qzLl8qo38xx6vyX5E06VnsIK2Q";
-const char ubidotsDeviceLabel[] = "Arduino101_MBA/";
+const char mySSID[] = "yourssid";
+const char myPASS[] = "yourwepkey";
+const char ubidotsToken[] = "yourtoken";
+const char ubidotsDeviceLabel[] = "Arduino101_MBA";
 const char ubidotsTempVarLabel[] = "temperature";
 const char destServer[] = "things.ubidots.com";
 
-const String httpRequest1 = "GET /api/v1.6/devices/";
-const String httpRequest2 = "/values?page_size=1&token=";
-const String httpRequest3 = "HTTP/1.1\n"
-                            "Host: things.ubidots.com\n";
+const String httpRequest1 = "GET /api/v1.6/devices/Arduino101_MBA/temperature/values?page_size=1&token=";
+const String httpRequest2 = " HTTP/1.1\r\n"
+                            "Host: things.ubidots.com\r\n"
+                            "Connection: close\r\n\r\n";
 
 Servo baffleServo;
 
-float temperature = 0.0;
 
+//////////////////////////////////////////////////////
+//
+//////////////////////////////////////////////////////
 void setup() {
    pinMode(PWMpin, OUTPUT);
    baffleServo.attach(PWMpin);
@@ -40,7 +45,15 @@ void setup() {
     }
 }
 
+
+
+
+//////////////////////////////////////////////////////
+//
+//////////////////////////////////////////////////////
 void loop() {
+    float temperature = 0.0;
+
     Serial.print("connecting to ");
     Serial.println(destServer);
     
@@ -51,25 +64,28 @@ void loop() {
         return;
     }
     
-    client.print(httpRequest1+ubidotsDeviceLabel+ubidotsTempVarLabel+httpRequest2+ubidotsToken+httpRequest3);
+    client.print(httpRequest1+ubidotsToken+httpRequest2);
     delay(500);
 
     while(client.available()){
-        String line = client.readStringUntil('\r');
+        String line = client.readStringUntil('\n');
         Serial.print(line);
     }
 
-    client.stop();
+    operateBaffle(temperature);
+    delay(5000);
+}
 
-    if (temperature > 75.0) {
+
+
+//////////////////////////////////////////////////////
+//
+//////////////////////////////////////////////////////
+bool operateBaffle(float t) {
+    if (t > 75.0) {
         baffleServo.write(baffleOpenPosition);
     }
     else{
         baffleServo.write(baffleClosedPosition);
     }
-
-
-
-    delay(5000);
-
 }

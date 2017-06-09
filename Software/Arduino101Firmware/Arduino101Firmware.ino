@@ -12,11 +12,11 @@ static int PWMpin = 2;
 const char mySSID[] = "myssid";
 const char myPASS[] = "password";
 const char ubidotsToken[] = "yoc4qzLl8qo38xx6vyX5E06VnsIK2Q";
-const char ubidotsDeviceId[] = "593aa4c87625424ab7bfebc1";
+const char ubidotsDeviceName[] = "Arduino101_MBA";
 const char destServer[] = "things.ubidots.com";
 
 const String httpRequest1 = "POST /api/v1.6/devices/";
-const String httpRequest2 = "/values/?token=";
+const String httpRequest2 = "?token=";
 const String httpRequest3 = "HTTP/1.1\n"
                             "Content-Type: application/json\n"
                             "Host: things.ubidots.com\n"
@@ -74,7 +74,7 @@ void loop() {
     }
 
   client.print(httpRequest1);
-  client.print(ubidotsDeviceId);
+  client.print(ubidotsDeviceName);
   client.print(httpRequest2);
   client.print(ubidotsToken);
   client.print(httpRequest3);
