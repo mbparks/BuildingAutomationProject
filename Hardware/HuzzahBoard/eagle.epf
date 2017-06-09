@@ -382,7 +382,7 @@ UsedLibrary="/Users/Mike/Documents/SparkFun-Eagle-Libraries/User-Submitted.lbr"
 
 [Win_1]
 Type="Schematic Editor"
-Loc="0 -22 1199 577"
+Loc="0 23 1199 622"
 State=0
 Number=2
 File="HuzzahBoard.sch"
@@ -425,11 +425,12 @@ ArcDirection=0
 AddLevel=2
 PadsSameType=0
 Layer=91
+Views=" 1: -4.86348 13.7805 89.5418 85.7113"
 Sheet="1"
 
 [Win_2]
 Type="Board Editor"
-Loc="234 68 1826 1065"
+Loc="924 23 1899 508"
 State=2
 Number=1
 File="HuzzahBoard.brd"
