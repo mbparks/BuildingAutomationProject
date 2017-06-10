@@ -64,6 +64,7 @@ void loop() {
     String pressurePacket = "\"pressure\": {\"value\":"+String(pressure)+"}, ";
     String humidityPacket = "\"humidity\": {\"value\":"+String(humidity)+"}}";
     String packet = tempPacket+pressurePacket+humidityPacket;
+    Serial.println(packet);
 
     int retVal = client.connect(destServer, 80);
     if (retVal <= 0)
