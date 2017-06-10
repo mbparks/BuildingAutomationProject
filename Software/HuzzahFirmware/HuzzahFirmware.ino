@@ -8,9 +8,9 @@ static int PWMpin = 2;
 static int baffleClosedPosition = 0;
 static int baffleOpenPosition = 180;
 
-const char mySSID[] = "yourssid";
-const char myPASS[] = "yourwpakey";
-const char ubidotsToken[] = "yourtoken";
+const char mySSID[] = "YOUR_SSID_HERE";
+const char myPASS[] = "YOUR_WPA_KEY_HERE";
+const char ubidotsToken[] = "YOUR_TOKEN_HERE";
 const char ubidotsDeviceLabel[] = "Arduino101_MBA";
 const char ubidotsTempVarLabel[] = "temperature";
 const char destServer[] = "things.ubidots.com";
@@ -72,18 +72,7 @@ void loop() {
         line.concat(client.readStringUntil('\n'));
     }
 
-    line.trim();
-    int valueIndexStart = line.indexOf("value");
-    line.remove(0, valueIndexStart+5);
-    valueIndexStart = line.indexOf("value");
-    line.remove(0, valueIndexStart+8);
-    valueIndexStart = line.indexOf(",");
-    line.remove(valueIndexStart);
-    temperature = line.toFloat();
-    Serial.print(F("Temperature: "));
-    Serial.print(temperature);
-    Serial.println("F");
-
+    temperature = cleanHttpResponse(line);
     operateBaffle(temperature);
     delay(5000);
 }
@@ -102,4 +91,23 @@ bool operateBaffle(float t) {
         baffleServo.write(baffleClosedPosition);
          Serial.println(F("Baffle is CLOSED"));
     }
+}
+
+
+//////////////////////////////////////////////////////
+//
+//////////////////////////////////////////////////////
+float cleanHttpResponse(String line) {
+    line.trim();
+    int valueIndexStart = line.indexOf("value");
+    line.remove(0, valueIndexStart+5);
+    valueIndexStart = line.indexOf("value");
+    line.remove(0, valueIndexStart+8);
+    valueIndexStart = line.indexOf(",");
+    line.remove(valueIndexStart);
+    float temperature = line.toFloat();
+    Serial.print(F("Temperature: "));
+    Serial.print(temperature);
+    Serial.println("F");
+    return temperature;
 }
