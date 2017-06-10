@@ -9,7 +9,7 @@ static int baffleClosedPosition = 0;
 static int baffleOpenPosition = 180;
 
 const char mySSID[] = "yourssid";
-const char myPASS[] = "yourwepkey";
+const char myPASS[] = "yourwpakey";
 const char ubidotsToken[] = "yourtoken";
 const char ubidotsDeviceLabel[] = "Arduino101_MBA";
 const char ubidotsTempVarLabel[] = "temperature";
@@ -53,6 +53,7 @@ void setup() {
 //////////////////////////////////////////////////////
 void loop() {
     float temperature = 0.0;
+    String line = "";
 
     Serial.print("connecting to ");
     Serial.println(destServer);
@@ -67,10 +68,21 @@ void loop() {
     client.print(httpRequest1+ubidotsToken+httpRequest2);
     delay(500);
 
-    while(client.available()){
-        String line = client.readStringUntil('\n');
-        Serial.print(line);
+    while(client.connected()){
+        line.concat(client.readStringUntil('\n'));
     }
+
+    line.trim();
+    int valueIndexStart = line.indexOf("value");
+    line.remove(0, valueIndexStart+5);
+    valueIndexStart = line.indexOf("value");
+    line.remove(0, valueIndexStart+8);
+    valueIndexStart = line.indexOf(",");
+    line.remove(valueIndexStart);
+    temperature = line.toFloat();
+    Serial.print(F("Temperature: "));
+    Serial.print(temperature);
+    Serial.println("F");
 
     operateBaffle(temperature);
     delay(5000);
@@ -84,8 +96,10 @@ void loop() {
 bool operateBaffle(float t) {
     if (t > 75.0) {
         baffleServo.write(baffleOpenPosition);
+        Serial.println(F("Baffle is OPEN"));
     }
     else{
         baffleServo.write(baffleClosedPosition);
+         Serial.println(F("Baffle is CLOSED"));
     }
 }
