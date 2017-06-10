@@ -15,9 +15,8 @@ const char ubidotsToken[] = "yoc4qzLl8qo38xx6vyX5E06VnsIK2Q";
 const char ubidotsDeviceName[] = "Arduino101_MBA";
 const char destServer[] = "things.ubidots.com";
 
-const String httpRequest1 = "POST /api/v1.6/devices/";
-const String httpRequest2 = "?token=";
-const String httpRequest3 = "HTTP/1.1\n"
+const String httpRequest1 = "POST /api/v1.6/devices/Arduino101_MBA?token=";
+const String httpRequest2 = "HTTP/1.1\n"
                             "Content-Type: application/json\n"
                             "Host: things.ubidots.com\n"
                             "Content-Length: ";
@@ -73,12 +72,8 @@ void loop() {
       return;
     }
 
-  client.print(httpRequest1);
-  client.print(ubidotsDeviceName);
-  client.print(httpRequest2);
-  client.print(ubidotsToken);
-  client.print(httpRequest3);
-  client.print(sizeof(packet));
+  client.print(httpRequest1+ubidotsToken+httpRequest2);
+  client.print(String(sizeof(packet)));
   client.print(packet);
   
 
@@ -106,7 +101,6 @@ void getMeasurements(float *t, float *p, float *h) {
     
     Serial.print(F("Temperature : "));
     Serial.print(*t);
-    Serial.print((char)176);
     Serial.println(F("C"));
 
     Serial.print(F("- Pressure : "));
