@@ -7,6 +7,7 @@
 static int PWMpin = 2;
 static int baffleClosedPosition = 0;
 static int baffleOpenPosition = 180;
+static float tempSetpoint = 75.0;
 
 const char mySSID[] = "YOUR_SSID_HERE";
 const char myPASS[] = "YOUR_WPA_KEY_HERE";
@@ -83,7 +84,7 @@ void loop() {
 //
 //////////////////////////////////////////////////////
 bool operateBaffle(float t) {
-    if (t > 75.0) {
+    if (t > tempSetpoint) {
         baffleServo.write(baffleOpenPosition);
         Serial.println(F("Baffle is OPEN"));
     }
