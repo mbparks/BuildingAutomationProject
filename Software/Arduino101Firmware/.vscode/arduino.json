@@ -1,4 +1,5 @@
 {
     "sketch": "Arduino101Firmware.ino",
-    "board": "Intel:arc32:arduino_101"
+    "board": "arduino:avr:uno",
+    "port": "/dev/cu.usbmodem46"
 }
