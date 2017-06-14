@@ -9,9 +9,9 @@ static int baffleClosedPosition = 0;
 static int baffleOpenPosition = 180;
 static float tempSetpoint = 75.0;
 
-const char mySSID[] = "YOUR_SSID_HERE";
-const char myPASS[] = "YOUR_WPA_KEY_HERE";
-const char ubidotsToken[] = "YOUR_TOKEN_HERE";
+const char mySSID[] = "yodanet";
+const char myPASS[] = "wsx474edc";
+const char ubidotsToken[] = "yoc4qzLl8qo38xx6vyX5E06VnsIK2Q";
 const char ubidotsDeviceLabel[] = "Arduino101_MBA";
 const char ubidotsTempVarLabel[] = "temperature";
 const char destServer[] = "things.ubidots.com";
@@ -72,7 +72,7 @@ void loop() {
     while(client.connected()){
         line.concat(client.readStringUntil('\n'));
     }
-
+    //Serial.print(line);
     temperature = cleanHttpResponse(line);
     operateBaffle(temperature);
     delay(5000);
@@ -100,12 +100,14 @@ bool operateBaffle(float t) {
 //////////////////////////////////////////////////////
 float cleanHttpResponse(String line) {
     line.trim();
-    int valueIndexStart = line.indexOf("value");
-    line.remove(0, valueIndexStart+5);
-    valueIndexStart = line.indexOf("value");
-    line.remove(0, valueIndexStart+8);
+    int valueIndexStart = line.indexOf("\"value\":");
+    line.remove(0, valueIndexStart+9);
+    //Serial.print("FIRST CUT: ");
+    //Serial.println(line);
     valueIndexStart = line.indexOf(",");
     line.remove(valueIndexStart);
+    //Serial.print("SECOND CUT: ");
+    //Serial.println(line);
     float temperature = line.toFloat();
     Serial.print(F("Temperature: "));
     Serial.print(temperature);
