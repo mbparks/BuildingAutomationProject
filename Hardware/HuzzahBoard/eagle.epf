@@ -381,9 +381,15 @@ UsedLibrary="/Users/Mike/Documents/SparkFun-Eagle-Libraries/SparkFun-Switches.lb
 UsedLibrary="/Users/Mike/Documents/SparkFun-Eagle-Libraries/User-Submitted.lbr"
 
 [Win_1]
+Type="Control Panel"
+Loc="61 46 1260 645"
+State=2
+Number=0
+
+[Win_2]
 Type="Schematic Editor"
-Loc="0 23 1199 622"
-State=0
+Loc="0 23 1687 1012"
+State=2
 Number=2
 File="HuzzahBoard.sch"
 View="-4.86348 13.7805 89.5418 85.7113"
@@ -428,13 +434,13 @@ Layer=91
 Views=" 1: -4.86348 13.7805 89.5418 85.7113"
 Sheet="1"
 
-[Win_2]
+[Win_3]
 Type="Board Editor"
-Loc="924 23 1899 508"
+Loc="457 23 1898 947"
 State=2
 Number=1
 File="HuzzahBoard.brd"
-View="-1.74244 -9.17702 88.8644 51.976"
+View="-1.524 -2.7686 77.724 55.3466"
 WireWidths=" 0.0762 0.1016 0.127 0.15 0.2 0.2032 0.254 0.3048 0.4064 0.508 0.6096 1.016 1.27 2.54 0.1524 0.8128"
 PadDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
 PadDrills=" 0.2 0.25 0.3 0.35 0.4 0.45 0.5 0.55 0.65 0.7 0.75 0.8 0.85 0.9 1 0.6"
@@ -473,12 +479,6 @@ ArcDirection=0
 AddLevel=2
 PadsSameType=0
 Layer=16
-
-[Win_3]
-Type="Control Panel"
-Loc="61 46 1260 645"
-State=2
-Number=0
 
 [Desktop]
 Screen="1920 1080"
