@@ -9,9 +9,9 @@ static int baffleClosedPosition = 0;
 static int baffleOpenPosition = 180;
 static float tempSetpoint = 75.0;
 
-const char mySSID[] = "yodanet";
-const char myPASS[] = "wsx474edc";
-const char ubidotsToken[] = "yoc4qzLl8qo38xx6vyX5E06VnsIK2Q";
+const char mySSID[] = "";
+const char myPASS[] = "";
+const char ubidotsToken[] = "";
 const char ubidotsDeviceLabel[] = "Arduino101_MBA";
 const char ubidotsTempVarLabel[] = "temperature";
 const char destServer[] = "things.ubidots.com";
