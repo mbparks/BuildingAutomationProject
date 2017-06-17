@@ -1,5 +1,5 @@
 [Eagle]
-Version="08 02 01"
+Version="08 02 02"
 Platform="Mac OS X"
 Globals="Globals"
 Desktop="Desktop"
@@ -436,7 +436,7 @@ Sheet="1"
 
 [Win_3]
 Type="Board Editor"
-Loc="457 23 1898 947"
+Loc="305 71 1746 995"
 State=2
 Number=1
 File="HuzzahBoard.brd"
@@ -481,7 +481,7 @@ PadsSameType=0
 Layer=16
 
 [Desktop]
-Screen="1920 1080"
+Screen="640 480"
 Window="Win_1"
 Window="Win_2"
 Window="Win_3"
