@@ -5,8 +5,9 @@
 #include <Servo.h>
 
 static int PWMpin = 2;
-static int baffleClosedPosition = 0;
-static int baffleOpenPosition = 180;
+static int baffleClosedPosition = 90;
+static int baffleOpenPosition = 1;
+static int loopDelay = 5000;
 static float tempSetpoint = 75.0;
 
 const char mySSID[] = "";
@@ -28,8 +29,7 @@ Servo baffleServo;
 //
 //////////////////////////////////////////////////////
 void setup() {
-   pinMode(PWMpin, OUTPUT);
-   baffleServo.attach(PWMpin);
+   
    Serial.begin(115200);
    delay(100);
    
@@ -44,6 +44,9 @@ void setup() {
        delay(500);
        Serial.print(".");
     }
+
+   pinMode(PWMpin, OUTPUT);
+   baffleServo.attach(PWMpin);
 }
 
 
@@ -67,15 +70,19 @@ void loop() {
     }
     
     client.print(httpRequest1+ubidotsToken+httpRequest2);
+
     delay(500);
 
     while(client.connected()){
         line.concat(client.readStringUntil('\n'));
     }
+
+    baffleServo.attach(PWMpin);
     //Serial.print(line);
     temperature = cleanHttpResponse(line);
     operateBaffle(temperature);
-    delay(5000);
+    delay(loopDelay);
+    baffleServo.detach();
 }
 
 
@@ -90,7 +97,7 @@ bool operateBaffle(float t) {
     }
     else{
         baffleServo.write(baffleClosedPosition);
-         Serial.println(F("Baffle is CLOSED"));
+        Serial.println(F("Baffle is CLOSED"));
     }
 }
 
