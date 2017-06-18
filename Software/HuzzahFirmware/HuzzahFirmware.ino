@@ -13,7 +13,7 @@ static float tempSetpoint = 75.0;
 const char mySSID[] = "";
 const char myPASS[] = "";
 const char ubidotsToken[] = "";
-const char ubidotsDeviceLabel[] = "Arduino101_MBA";
+const char ubidotsDeviceLabel[] = "";
 const char ubidotsTempVarLabel[] = "temperature";
 const char destServer[] = "things.ubidots.com";
 
