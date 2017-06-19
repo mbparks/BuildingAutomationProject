@@ -5,16 +5,16 @@
 #include <SoftwareSerial.h> 
 #include <SparkFunESP8266WiFi.h>
 
-static TEWeatherShield weatherShield;
+static TEWeatherShield  weatherShield;
 
 const char mySSID[] = "";
 const char myPASS[] = "";
 
-const char destServer[] = "things.ubidots.com";
 const char ubidotsToken[] = "";
 const char humidVarId[] = "";
 const char tempVarId[] = "";
 const char pressVarId[] = "";
+const char destServer[] = "things.ubidots.com";
 
 const int loopDelay = 30000;
 
