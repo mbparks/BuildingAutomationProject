@@ -1,6 +1,5 @@
 # Building Automation Project
-for Mouser Electronics
-by Mike Parks
+brought to you by Mouser Electronics
 
 This repo holds all the information needed to experiment with an IoT-based building automation system that leverages the TE Connectivty Weather Shield.
 
